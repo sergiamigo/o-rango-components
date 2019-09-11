@@ -1,42 +1,156 @@
 :host {
 
- /* Generic Colors variables*/
- --o-input-default: #4a627b;
- --o-input-default-light : #a6b7c9;
- --o-input-error : #DE350B;
- --o-input-error-light : #faac99;
- --o-input-warning:#FFC400;
- --o-input-info:  #0065FF;
- --o-input-success:#36B37E;
+  --blue: #007bff;
+  --indigo: #6610f2;
+  --purple: #6f42c1;
+  --pink: #e83e8c;
+  --red: #dc3545;
+  --orange: #fd7e14;
+  --yellow: #ffc107;
+  --green: #28a745;
+  --teal: #20c997;
+  --cyan: #17a2b8;
 
- /* Size Style variables  & Font Style variables */
- --o-input-height : 3.5em;
- --o-input-font-size :1.3em;
- --o-input-font-weight : 600;
- --o-input-font-family : 'San Francisco', -apple-system, BlinkMacSystemFont, '.SFNSText-Regular', 'Helvetica Neue', Helvetica, sans-serif;
- --o-input-font-color-light : #FFFFFF;
- --o-input-font-color-dark : #091E42;
+  --white: #fff;
+  --gray: #808DAD;
+  --gray-dark: #232727;
+
+  --light: #E9E9EA;
+  --dark: #121020;
+
+  --o-theme-primary: #FD2B2B;
+  --o-theme-secondary: #EC7505;
+
+  --o-theme-warning: #FFC400;
+  --o-theme-info: #0065FF;
+  --o-theme-success: #36B37E;
+
+  --o-theme-error: #DE350B;
+  --o-theme-error-light: #faac99;
+
+  /* Generic Colors variables*/
+  --o-input-default: #4a627b;
+  --o-input-default-light: #97A1A2;
+
+  /* Size Style variables  & Font Style variables */
+  --o-input-height: 3.5em;
+  --o-input-font-size: 1em;
+  --o-input-font-weight: 600;
+  --o-input-font-family: 'San Francisco', -apple-system, BlinkMacSystemFont, '.SFNSText-Regular', 'Helvetica Neue', Helvetica, sans-serif;
+  --o-input-font-color-light: #FFFFFF;
+  --o-input-font-color-dark: #091E42;
+}
+
+:host(.size-xs) {
+  .o-input__field {
+    height: 1.5rem;
+  }
+}
+
+:host(.size-sm) {
+  .o-input__field {
+    height: 2rem;
+  }
+}
+
+:host(.size-md) {
+  .o-input__field {
+    height: 2.5rem;
+  }
+}
+
+:host(.size-lg) {
+  .o-input__field {
+    height: 3rem;
+  }
+}
+
+:host(.size-xl) {
+  .o-input__field {
+    height: 3.5rem;
+  }
+}
+
+:host([filled]) {
+  --o-input-bg-color: #E7EAEA;
+}
+
+:host([outline]) {
+  --o-input-bg-color: transparent;
+}
+
+:host([dark]) {
+  .o-input {
+    &__field {
+      background: red;
+    }
+  }
+}
+
+:host([light]) {
+  .o-input {
+    &__field {
+      background: green;
+    }
+  }
 }
 
 .o-input {
+  &__container {
+    background-color: var(--o-input-bg-color);
+    font-family: var(--o-input-font-family);
+    position: relative;
+  }
 
+  &__label {
+    position: absolute;
+    left: 10px;
+
+    .o-input__container--blur & {
+      font-size: 1rem;
+      top: calc(50% - var(--o-input-font-size) / 2);
+      transition: all .3s ease-in;
+    }
+
+    .o-input__container--focus & {
+      color: var(--o-theme-primary);
+      font-size: calc(var(--o-input-font-size) / 2);
+      top: 5px;
+      transition: all .3s ease-in;
+    }
+  }
+
+  &__field {
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid #121020;
+    color: #121020;
+    font-size: var(--o-input-font-size);
+    outline: none;
+    padding: 15px 10px 5px;
+    width: 100%;
+  }
+
+  &__border {
+    background: var(--o-theme-primary);
+    bottom: 0;
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    transform: scaleX(0);
+    transform-origin: 0 50%;
+    transition: transform 0.5s;
+
+    .o-input__container--focus & {
+      transform: scaleX(1);
+    }
+  }
 }
 
-input{
-  background-color:var( --o-input-default-light) ;
-  border: 1px;
-  cursor: inherit;
-  font-family: inherit;
-  font-size: var(--o-input-font-size);
-  display: block;
-  width: 100%;
-  height: 2.5rem;
+input {
+  //height: 2.5rem;
   min-width: 300px;
-  color: var(--o-input-default);
-  border: none;
-  box-shadow: 0 1px 0 0 var(--o-input-default);
-  order: 2;
-  border-bottom: 1px solid transparent;
 
 
   &::-ms-clear {
@@ -49,19 +163,22 @@ input{
 
   &::-webkit-input-placeholder {
     /* WebKit, Blink, Edge */
-    color: var( --o-input-default-light);
+    color: var(--o-input-default-light);
   }
+
   &::-moz-placeholder {
     /* Mozilla Firefox 19+ */
-    color: var( --o-input-default-light);
+    color: var(--o-input-default-light);
     opacity: 1;
   }
+
   &::-ms-input-placeholder {
     /* Microsoft Edge */
-    color: var( --o-input-default-light);
+    color: var(--o-input-default-light);
   }
+
   &:-ms-input-placeholder {
     /* Internet Explorer 10-11 */
-    color: var( --o-input-default-light);
+    color: var(--o-input-default-light);
   }
 }

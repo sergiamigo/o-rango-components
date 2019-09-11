@@ -22,20 +22,17 @@ export namespace Components {
     'maxLength': any;
     'min': any;
     'name': any;
-    'onBlur': any;
-    'onChange': any;
-    'onFocus': any;
     'onKeyDown': any;
     'onKeyPress': any;
     'onKeyUp': any;
     'pattern': any;
-    'placeholder': any;
+    'placeholder': string;
     'readOnly': any;
     'required': any;
     'rounded'?: boolean;
     'spellCheck': any;
     'type': any;
-    'value': any;
+    'value'?: string | null;
   }
 }
 
@@ -66,20 +63,21 @@ declare namespace LocalJSX {
     'maxLength'?: any;
     'min'?: any;
     'name'?: any;
-    'onBlur'?: any;
-    'onChange'?: any;
-    'onFocus'?: any;
     'onKeyDown'?: any;
     'onKeyPress'?: any;
     'onKeyUp'?: any;
+    'onOrangoBlur'?: (event: CustomEvent<any>) => void;
+    'onOrangoChange'?: (event: CustomEvent<any>) => void;
+    'onOrangoFocus'?: (event: CustomEvent<any>) => void;
+    'onOrangoInput'?: (event: CustomEvent<any>) => void;
     'pattern'?: any;
-    'placeholder'?: any;
+    'placeholder'?: string;
     'readOnly'?: any;
     'required'?: any;
     'rounded'?: boolean;
     'spellCheck'?: any;
     'type'?: any;
-    'value'?: any;
+    'value'?: string | null;
   }
 
   interface IntrinsicElements {
