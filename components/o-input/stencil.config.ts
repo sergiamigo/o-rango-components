@@ -1,22 +1,20 @@
-
 import { Config } from '@stencil/core';
 import { sass } from '@stencil/sass';
 import { postcss } from '@stencil/postcss';
-import * as autoprefixer from 'autoprefixer';
-
+import autoprefixer from 'autoprefixer';
 
 export const config: Config = {
   namespace: 'o-input',
   plugins: [
     sass(),
     postcss({
-      plugins: [autoprefixer({
-      browsers: ['last 3 versions'],
-      cascade: false})]
+      plugins: [
+        autoprefixer()
+      ]
     })
   ],
   outputTargets: [
     { type: 'www' },
-    { type: 'dist' }
-  ]
+    { type: 'dist' },
+  ],
 };
