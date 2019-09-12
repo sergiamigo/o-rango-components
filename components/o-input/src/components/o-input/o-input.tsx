@@ -1,6 +1,6 @@
 // Hack For CssClassMap
 export type CssClassMap = { [className: string]: boolean };
-import { Component, Event, EventEmitter, h, Prop, State } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Prop, State } from '@stencil/core';
 
 @Component({
   tag: 'o-input',
@@ -11,8 +11,17 @@ import { Component, Event, EventEmitter, h, Prop, State } from '@stencil/core';
 
 export class OInputComponent {
 
-  @Prop() label: string;
-  @Prop() placeholder: string;
+  /**
+   * Label text of the input
+   */
+  @Prop({ reflect: true }) label: string;
+  /**
+   * Text that shows before the input has a value.
+   */
+  @Prop({ reflect: true }) placeholder?: string;
+  /**
+   * The value of the input.
+   */
   @Prop({ mutable: true, reflect: true }) value?: string | null = '';
 
   @Event() orangoFocus!: EventEmitter;
@@ -22,6 +31,8 @@ export class OInputComponent {
 
   @State() isFocused: boolean;
   @State() isEmpty: boolean;
+
+  @Element() el: HTMLElement;
 
   @Prop() autoComplete: any; // lg - md - sm
   @Prop() autoFocus: any;
@@ -42,41 +53,39 @@ export class OInputComponent {
 
   @Prop({ reflectToAttr: true }) disabled: boolean = false;
 
-  @Prop() block?: boolean = false;
-  // @Prop() type: string = 'default' //default, error, warning , info , success;
-  @Prop() rounded?: boolean = false;
-
-  @Prop({ reflectToAttr: true }) fill?: 'dashed' | 'outline' | 'solid' = 'solid';
-
   componentWillLoad() {
     this.isFocused = false;
-    this.isEmpty = true;
+    this.isEmpty = !this.value.length && !this.placeholder;
   }
 
   private orangoFocusEventHandler(e: Event) {
-    this.isFocused = !(e.target as HTMLInputElement).value.length || !this.value;
+    this.isFocused = true;
+    this.isEmpty = !this.value.length && !this.placeholder && !this.isFocused;
     this.orangoFocus.emit(e);
   }
 
   private orangoBlurEventHandler(e: Event) {
-    this.isFocused = !!(e.target as HTMLInputElement).value.length;
+    this.isFocused = false;
+    this.isEmpty = !this.value.length && !this.placeholder;
     this.orangoBlur.emit(e);
+  }
+
+  private orangoInputEventHandler(e: Event) {
+    this.value = (e.target as HTMLInputElement).value;
+    this.isEmpty = !this.value.length && !this.isFocused && !this.placeholder;
+    this.orangoInput.emit(e);
   }
 
   private orangoChangeEventHandler(e: Event) {
     this.orangoChange.emit(e);
   }
 
-  private orangoInputEventHandler(e: Event) {
-    this.orangoInput.emit(e);
-  }
-
   render() {
     return (
       <div class={{
         'o-input__container': true,
+        'o-input__container--active': !this.isEmpty,
         'o-input__container--focus': this.isFocused,
-        'o-input__container--blur': !this.isFocused,
       }}>
         <label class="o-input__label">{this.label}</label>
         <input
@@ -104,7 +113,14 @@ export class OInputComponent {
           type={this.type}
           value={this.value}
         />
-        <div class="o-input__border"/>
+        {this.el.getAttribute('filled')=== '' ?
+          <div class="o-input__filled"/> :
+          <div class="o-input__outline">
+            <div class="o-input__outline--left"/>
+            <div class="o-input__outline--top"/>
+            <div class="o-input__outline--right"/>
+            <div class="o-input__outline--bottom"/>
+          </div>}
       </div>
     );
   }

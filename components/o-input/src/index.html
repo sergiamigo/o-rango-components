@@ -9,6 +9,69 @@
 </head>
 <body>
 <o-demo-bar name="Demo o-input" events="'oAlertLoad' ,'oAlertDestroyed'">
+  <o-demo-case name="Outline input">
+    <template>
+      <style>
+        .o-demo-case-input {
+          background-color: white;
+          padding: 15px 5px;
+        }
+      </style>
+      <script type="module" src="/build/o-input.esm.js"></script>
+      <div class="o-demo-case-input">
+        <o-input outline
+                 class="size-xs"
+                 label="size-xs"
+                 type="default">
+        </o-input>
+      </div>
+      <div class="o-demo-case-input">
+        <o-input outline
+                 class="size-sm"
+                 label="size-sm"
+                 type="default">
+        </o-input>
+      </div>
+      <div class="o-demo-case-input">
+        <o-input outline
+                 class="size-md"
+                 label="size-md"
+                 type="default">
+        </o-input>
+      </div>
+      <div class="o-demo-case-input">
+        <o-input outline
+                 class="size-lg"
+                 label="size-lg"
+                 type="default">
+        </o-input>
+      </div>
+      <div class="o-demo-case-input">
+        <o-input outline
+                 class="size-xl"
+                 label="size-xl"
+                 type="default">
+        </o-input>
+      </div>
+      <div class="o-demo-case-input">
+        <o-input outline
+                 class="size-md"
+                 label="placeholder"
+                 type="default"
+                 placeholder="placeholder">
+        </o-input>
+      </div>
+      <div class="o-demo-case-input">
+        <o-input outline
+                 class="size-md"
+                 label="value"
+                 type="default"
+                 value="value">
+        </o-input>
+      </div>
+    </template>
+  </o-demo-case>
+
   <o-demo-case name="Filled input">
     <template>
       <style>
@@ -20,105 +83,54 @@
       <div class="o-demo-case-input">
         <o-input filled
                  class="size-xs"
-                 label="label 1"
-                 type="default"
-                 fill="solid">
+                 label="size-xs"
+                 type="default">
         </o-input>
       </div>
       <div class="o-demo-case-input">
         <o-input filled
                  class="size-sm"
-                 label="label 1"
-                 type="default"
-                 fill="solid">
+                 label="size-sm"
+                 type="default">
         </o-input>
       </div>
       <div class="o-demo-case-input">
         <o-input filled
                  class="size-md"
-                 label="label 1"
-                 type="default"
-                 fill="solid">
+                 label="size-md"
+                 type="default">
         </o-input>
       </div>
       <div class="o-demo-case-input">
         <o-input filled
                  class="size-lg"
-                 label="label 1"
-                 type="default"
-                 fill="solid">
+                 label="size-lg"
+                 type="default">
         </o-input>
       </div>
       <div class="o-demo-case-input">
         <o-input filled
                  class="size-xl"
-                 label="label 1"
-                 type="default"
-                 fill="solid">
+                 label="size-xl"
+                 type="default">
         </o-input>
       </div>
       <div class="o-demo-case-input">
         <o-input filled
-                 label="label 2"
+                 class="size-md"
+                 label="placeholder"
                  type="default"
-                 fill="solid">
+                 placeholder="placeholder">
         </o-input>
       </div>
       <div class="o-demo-case-input">
-        <o-input light
-                 label="label 2"
+        <o-input filled
+                 class="size-md"
+                 label="value"
                  type="default"
-                 fill="solid"
                  value="value">
         </o-input>
       </div>
-    </template>
-  </o-demo-case>
-
-
-  <o-demo-case name="Solid input">
-    <template>
-      <script type="module" src="/build/o-input.esm.js"></script>
-      <br>
-      <br>
-      <p>
-        <o-input type="default" fill="solid">Submit</o-input>
-      </p>
-      <p>
-        <o-input type="warning" fill="solid">Submit</o-input>
-      </p>
-      <p>
-        <o-input type="error" fill="solid">Submit</o-input>
-      </p>
-      <p>
-        <o-input type="success" fill="solid">Submit</o-input>
-      </p>
-      <p>
-        <o-input type="info" fill="solid">Submit</o-input>
-      </p>
-    </template>
-  </o-demo-case>
-
-  <o-demo-case name="Outline input">
-    <template>
-      <script type="module" src="/build/o-input.esm.js"></script>
-      <br>
-      <br>
-      <p>
-        <o-input type="default" fill="outline">Submit</o-input>
-      </p>
-      <p>
-        <o-input type="warning" fill="outline">Submit</o-input>
-      </p>
-      <p>
-        <o-input type="error" fill="outline">Submit</o-input>
-      </p>
-      <p>
-        <o-input type="success" fill="outline">Submit</o-input>
-      </p>
-      <p>
-        <o-input type="info" fill="outline">Submit</o-input>
-      </p>
     </template>
   </o-demo-case>
 

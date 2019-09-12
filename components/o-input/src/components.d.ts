@@ -12,11 +12,12 @@ export namespace Components {
   interface OInput {
     'autoComplete': any;
     'autoFocus': any;
-    'block'?: boolean;
     'disabled': boolean;
-    'fill'?: 'dashed' | 'outline' | 'solid';
     'form': any;
     'innerRef': any;
+    /**
+    * Label text of the input
+    */
     'label': string;
     'max': any;
     'maxLength': any;
@@ -26,12 +27,17 @@ export namespace Components {
     'onKeyPress': any;
     'onKeyUp': any;
     'pattern': any;
-    'placeholder': string;
+    /**
+    * Text that shows before the input has a value.
+    */
+    'placeholder'?: string;
     'readOnly': any;
     'required': any;
-    'rounded'?: boolean;
     'spellCheck': any;
     'type': any;
+    /**
+    * The value of the input.
+    */
     'value'?: string | null;
   }
 }
@@ -53,11 +59,12 @@ declare namespace LocalJSX {
   interface OInput extends JSXBase.HTMLAttributes<HTMLOInputElement> {
     'autoComplete'?: any;
     'autoFocus'?: any;
-    'block'?: boolean;
     'disabled'?: boolean;
-    'fill'?: 'dashed' | 'outline' | 'solid';
     'form'?: any;
     'innerRef'?: any;
+    /**
+    * Label text of the input
+    */
     'label'?: string;
     'max'?: any;
     'maxLength'?: any;
@@ -71,12 +78,17 @@ declare namespace LocalJSX {
     'onOrangoFocus'?: (event: CustomEvent<any>) => void;
     'onOrangoInput'?: (event: CustomEvent<any>) => void;
     'pattern'?: any;
+    /**
+    * Text that shows before the input has a value.
+    */
     'placeholder'?: string;
     'readOnly'?: any;
     'required'?: any;
-    'rounded'?: boolean;
     'spellCheck'?: any;
     'type'?: any;
+    /**
+    * The value of the input.
+    */
     'value'?: string | null;
   }
 
