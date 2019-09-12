@@ -1,4 +1,4 @@
-# @o-rango/button
+# @o-rango/input
 Provides feedback messages for  user actions with alert messages.
 
 [![npm version](https://badge.fury.io/js/%40o-rango%2Fo-input.svg)](https://badge.fury.io/js/%40o-rango%2Fo-input)
@@ -50,6 +50,19 @@ Properties
 
 ### Customization 
 
+
+| Custom Property                    | Description                            | Default                     |
+|------------------------------------|----------------------------------------|:---------------------------:|
+| --o-input-label-color              | Label color                            | var(--o-theme-dark)         | 
+| --o-input-input-color              | Input color                            | var(--o-theme-dark)         | 
+| --o-input-placeholder-color        | placeholder color                      | var(--o-theme-gray)         | 
+| --o-input-filled-bg-color          | Filled input background color          | var(--o-theme-light)        |
+| --o-input-filled-hover-bg-color    | Filled input background color on hover | var(--o-theme-lighten-gray) |
+| --o-input-filled-border-color      | Filled input border color              | var(--o-theme-dark)         | 
+|                                    |                                        |                             |
+|                                    |                                        |                             |
+|                                    |                                        |                             |
+|                                    |                                        |                             |
 
 ```css
  /* Generic Colors variables*/

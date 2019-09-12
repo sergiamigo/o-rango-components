@@ -28,6 +28,22 @@
   --o-theme-error: #DE350B;
   --o-theme-error-light: #faac99;
 
+  /* o-rango Theme */
+
+  --o-theme-lightest-gray: #E8E9E9;
+  --o-theme-lighten-gray: #D1D3D4;
+  --o-theme-light-gray: #BABDBF;
+  --o-theme-gray: #808488;
+  --o-theme-dark-gray: #666A6D;
+  --o-theme-darken-gray: #4D5052;
+  --o-theme-darkest-gray: #333537;
+
+  --o-theme-light: #E9E9EA;
+  --o-theme-dark: #1C1D1E;
+
+
+
+
   /* Generic Colors variables*/
   --o-input-default: #4a627b;
   --o-input-default-light: #97A1A2;
@@ -72,31 +88,35 @@
 }
 
 :host([filled]) {
-  --o-input-bg-color: #E7EAEA;
-
   .o-input {
     &__container {
+      background-color: var(--o-input-filled-bg-color, var(--o-theme-light));
+      &:hover {
+        background-color: var(--o-input-filled-hover-bg-color, var(--o-theme-lighten-gray));
+      }
+      &--focus {
+        .o-input__filled {
+          transform: scaleX(1);
+        }
+      }
+
       &--active {
         .o-input__label {
           top: 5px;
-        }
-
-        .o-input__filled {
-          transform: scaleX(1);
         }
       }
     }
 
     &__field {
       border: 0;
-      border-bottom: 1px solid #121020;
+      border-bottom: 1px solid var(--o-input-filled-border-color, var(--o-theme-dark));
     }
 
     &__filled {
       background: var(--o-theme-primary);
       bottom: 0;
       display: block;
-      height: 1px;
+      height: 2px;
       position: absolute;
       transform: scaleX(0);
       transform-origin: 0 50%;
@@ -111,10 +131,7 @@
 
   .o-input {
     &__container {
-      &--active {
-        .o-input__label {
-          top: calc(var(--o-input-font-size) * -.6);
-        }
+      &--focus {
         .o-input__outline {
           &--bottom,
           &--top {
@@ -125,6 +142,12 @@
           &--right {
             transform: scaleY(1);
           }
+        }
+      }
+
+      &--active {
+        .o-input__label {
+          top: calc(var(--o-input-font-size) * -.6);
         }
       }
     }
@@ -161,7 +184,6 @@
         height: 100%;
         transform: scaleY(0);
         width: 1px;
-
       }
 
       &--bottom {
@@ -190,16 +212,22 @@
       }
     }
   }
+
+  [disabled],
+  &.disabled{
+
+  }
 }
 
 .o-input {
   &__container {
-    background-color: var(--o-input-bg-color);
+    //background-color: var(--o-input-bg-color);
     font-family: var(--o-input-font-family);
     position: relative;
   }
 
   &__label {
+    color: var(--o-input-label-color, var(--o-theme-dark));
     font-size: var(--o-input-font-size);
     font-weight: 400;
     left: 10px;
@@ -219,7 +247,7 @@
 
   &__field {
     background: transparent;
-    color: #121020;
+    color: var(--o-input-input-color, var(--o-theme-dark));
     font-size: var(--o-input-font-size);
     font-weight: 400;
     min-width: 300px;
@@ -228,7 +256,7 @@
     width: 100%;
 
     &::placeholder {
-      color: var(--gray);
+      color: var(--o-input-placeholder-color, var(--o-theme-gray));
       font-size: calc(var(--o-input-font-size) * .9);
       font-weight: 300;
     }
